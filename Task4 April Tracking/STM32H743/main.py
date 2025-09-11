@@ -49,17 +49,17 @@ while True:
         tag_center = (tag.cx(), tag.cy())
         tag_area = tag.w() * tag.h()
         print_args = (tag.family(), tag.id(), (180 * tag.rotation()) / math.pi)
-        print("Tag Family %s, Tag ID %d, rotation %f (degrees)" % print_args)
+        print(tag_center, tag_area)
         if abs(tag_center[0] - 80) > 2:
             if tag_center[0] - 80 > 2: # turn right
                 SPEED_B += 0
-                SPEED_L += 200
-                SPEED_R += 200
+                SPEED_L += 400
+                SPEED_R += 400
             elif tag_center[0] - 80 < -2: # turn left
                 SPEED_B += 0
-                SPEED_L += -200
-                SPEED_R += -200
-        elif tag_area < 700: # move forward
+                SPEED_L += -400
+                SPEED_R += -400
+        if tag_area < 700: # move forward
             SPEED_B += 0
             SPEED_L += 2400
             SPEED_R += -2400
@@ -67,13 +67,9 @@ while True:
             SPEED_B += 0
             SPEED_L += -2400
             SPEED_R += 2400
-        else: # stop
-            SPEED_B += 0
-            SPEED_L += 0
-            SPEED_R += 0
-        break
 
-    print(clock.fps())
+
+    print(SPEED_B, SPEED_L, SPEED_R)
     motor2.run(SPEED_L)
     motor3.run(SPEED_R)
     motor1.run(SPEED_B)
