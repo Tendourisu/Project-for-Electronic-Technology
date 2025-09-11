@@ -162,8 +162,6 @@ def handle_kick_direction(img):
         print("*****")
         mode = 4 # start kicking
 
-
-
 def start_kicking(img):
     global KICK, OBS
     global mode
@@ -411,19 +409,6 @@ def handle_line_tracking(img):
     motor3.run(speed_R)
     motor1.run(speed_B)
     # print(stat)
-
-def handle_kick_ball(img):
-    """踢球模式占位函数：原有详细实现被注释，可在需要时恢复完整逻辑。"""
-    # 原始实现在文件中已被注释。这里提供最小占位以避免未定义错误。
-    # 在真实踢球模式下，应恢复文件中注释的完整算法。
-    global mode
-    # 简单行为：保持停止状态并返回
-    motor2.run(0)
-    motor3.run(0)
-    motor1.run(0)
-    KICK = True
-
-
 
 # -------------------------- 主循环 --------------------------
 clock = time.clock()
